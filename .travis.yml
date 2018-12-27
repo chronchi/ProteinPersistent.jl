@@ -10,7 +10,7 @@ os:
   - linux 
 
 before_installation:
-	julia -e 'ENV["PYTHON"]="python"'
+  - julia -e 'ENV["PYTHON"]="python"'
 
 coveralls: true
 
