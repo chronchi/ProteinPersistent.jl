@@ -12,13 +12,9 @@ os:
 notifications:
   email: false
 
-matrix:
-  - PYTHON=/usr/bin/python
-  #env:
-  #- PYTHON="python"
 
 before_install:
- - (sudo apt-get -qq update && sudo apt-get install -y python python-pip)
+ - (sudo apt-get install python python-pip)
  - (sudo pip install Cython)
  - (sudo pip install ripser)
  - julia -e 'ENV["PYTHON"]="/usr/bin/python"; using Pkg; Pkg.add("PyCall"); Pkg.build("PyCall")'
