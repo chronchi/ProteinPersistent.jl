@@ -9,7 +9,13 @@ julia:
 os:
   - linux
 
+notifications:
+  email: false
+
+env:
+  - PYTHON=""
+
 before_installation:
-  - julia -e 'ENV["PYTHON"]="python"; using Pkg; Pkg.add("PyCall"); Pkg.build("PyCall"); Pkg.add("Conda"); using Conda; Conda.update(); Conda.add("Cython"); Conda.add("ripser");'
+  - julia -e 'using Pkg; Pkg.add("PyCall"); Pkg.build("PyCall"); Pkg.add("Conda"); using Conda; Conda.update(); Conda.add("Cython"); Conda.add("ripser");'
 
 coveralls: true
