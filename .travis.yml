@@ -13,7 +13,7 @@ notifications:
   email: false
 
 matrix:
-  - PYTHON=python
+  - PYTHON=/usr/bin/python
   #env:
   #- PYTHON="python"
 
