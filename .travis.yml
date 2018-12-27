@@ -3,14 +3,11 @@
 language: julia
 
 julia:
-  - release
   - nightly
+  - 1.0
 
-install:
-  - julia -E 'Pkg.add(pwd())'
+os: 
+  - linux 
 
-script:
-  - julia -E 'Pkg.test("ProteinPersistent"; coverage=true)'
+coveralls: true
 
-after_success:
-  - julia -E 'cd(Pkg.dir("ProteinPersistent")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(process_folder())'
