@@ -1,0 +1,15 @@
+# file .travis.yml
+language: julia
+
+julia:
+  - release
+  - nightly
+
+install:
+  - julia -E 'Pkg.clone(pwd())'
+
+script:
+  - julia -E 'Pkg.test("ProteinPersistent"; coverage=true)'
+
+after_success:
+  - julia -E 'cd(Pkg.dir("ProteinPersistent")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(process_folder())'
