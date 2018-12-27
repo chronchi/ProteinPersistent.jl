@@ -10,6 +10,7 @@ os:
   - linux 
 
 before_installation:
+  - sudo apt-get install python3 && sudo apt-get install python3-pip && sudo pip3 install Cython && sudo pip3 install ripser
   - julia -e 'ENV["PYTHON"]="python"'
 
 coveralls: true
