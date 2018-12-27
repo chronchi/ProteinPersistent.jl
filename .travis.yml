@@ -17,6 +17,7 @@ env:
 
 before_install:
  - (sudo apt-get -qq update && sudo apt-get install -y python python-pip)
- - (sudo pip install Cython ripser)
+ - (sudo pip install Cython)
+ - (sudo pip install ripser)
 
 coveralls: true
