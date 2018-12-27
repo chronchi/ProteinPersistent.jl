@@ -16,7 +16,7 @@ env:
   - PYTHON="python"
 
 before_install:
- - (sudo apt-get -qq update && sudo apt-get install -y $PYTHON)
- - (sudo apt-get -qq update && sudo apt-get install -y python python-pip && sudo pip install Cython ripser && sudo pip install &&  && sudo pip install scipy)
+ - (sudo apt-get -qq update && sudo apt-get install -y python python-pip)
+ - (sudo pip install Cython ripser)
 
 coveralls: true
