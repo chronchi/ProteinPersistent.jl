@@ -13,9 +13,13 @@ notifications:
   email: false
 
 env:
-  - PYTHON=""
+  - PYTHON="python"
 
-before_installation:
-  - julia -e 'using Pkg; Pkg.add("PyCall"); Pkg.build("PyCall"); Pkg.add("Conda"); using Conda; Conda.update(); Conda.add("Cython"); Conda.add("ripser");'
+addons:
+  apt:
+    packages:
+      - python-numpy
+      - python-Cython
+      - python-ripser
 
 coveralls: true
