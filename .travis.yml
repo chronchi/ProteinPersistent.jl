@@ -15,11 +15,8 @@ notifications:
 env:
   - PYTHON="python"
 
-addons:
-  apt:
-    packages:
-      - python-numpy
-      - python-Cython
-      - python-ripser
-
+before_install:
+ - test (sudo apt-get -qq update && sudo apt-get install -y $PYTHON)
+ - (sudo apt-get -qq update && sudo apt-get install -y python python-pip && sudo pip install Cython ripser && sudo pip install &&  && sudo pip install scipy
+ 
 coveralls: true
