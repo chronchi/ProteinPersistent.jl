@@ -6,12 +6,10 @@ julia:
   - nightly
   - 1.0
 
-os: 
-  - linux 
+os:
+  - linux
 
 before_installation:
-  - sudo apt-get install python3 && sudo apt-get install python3-pip && sudo pip3 install Cython && sudo pip3 install ripser
-  - julia -e 'ENV["PYTHON"]="python"'
+  - julia -e 'ENV["PYTHON"]="python"; using Pkg; Pkg.add("PyCall"); Pkg.build("PyCall"); Pkg.add("Conda"); using Conda; Conda.update(); Conda.add("Cython"); Conda.add("ripser");'
 
 coveralls: true
-
