@@ -16,7 +16,6 @@ notifications:
 before_install:
  - (sudo apt-get install python python-pip)
  - (sudo pip install Cython)
- - (sudo pip install python-tk)
  - (sudo pip install ripser)
  - julia -e 'ENV["PYTHON"]="/usr/local/bin/python"; using Pkg; Pkg.add("PyCall"); Pkg.build("PyCall")'
 
