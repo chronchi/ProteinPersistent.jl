@@ -6,10 +6,10 @@ julia:
   - nightly
 
 install:
-  - julia -E 'Pkg.clone(pwd())'
+  - julia -E 'using Pkg; Pkg.clone(pwd())'
 
 script:
-  - julia -E 'Pkg.test("ProteinPersistent"; coverage=true)'
+  - julia -E 'using Pkg; Pkg.test("ProteinPersistent"; coverage=true)'
 
 after_success:
-  - julia -E 'cd(Pkg.dir("ProteinPersistent")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(process_folder())'
+  - julia -E 'using Pkg; cd(Pkg.dir("ProteinPersistent")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(process_folder())'
