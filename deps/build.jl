@@ -14,7 +14,7 @@ if lowercase(get(ENV, "CI", "false")) == "true"
         python = joinpath(envpath, "bin", "python2")
 
         run(`$python -m pip install Cython --install-option="--no-cython-compile"`)
-        run(`$python -m pip install ripser`)
+        run(`$python -m pip install ripser biopython`)
         #run(`$python -m pip install biopython`)
         #run(`$python -m pip install re`)
 
