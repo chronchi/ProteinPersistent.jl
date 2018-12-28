@@ -12,6 +12,8 @@ os:
 notifications:
   email: false
 
+matrix:
+  - PYTHON="python"
 
 before_install:
  - (sudo apt-get install python python-pip)
