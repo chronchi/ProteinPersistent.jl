@@ -16,8 +16,8 @@ const pdb = PyNULL()
 const re = PyNULL()
 
 function __init__()
-    copy!(ripser, pyimport("ripser"))
-    copy!(pdb, pyimport("Bio.PDB"))
+    copy!(ripser, pyimport_conda("scikit-tda.ripser", "scikit-tda"))
+    copy!(pdb, pyimport_conda("Bio.PDB", "biopython", "conda-forge"))
     copy!(re, pyimport("re"))
 end
 
