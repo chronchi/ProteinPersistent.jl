@@ -15,6 +15,8 @@ if lowercase(get(ENV, "CI", "false")) == "true"
 
         run(`$python -m pip install Cython --install-option="--no-cython-compile"`)
         run(`$python -m pip install ripser`)
+        run(`$python -m pip install biopython`)
+        run(`$python -m pip install re`)
 
         ENV["PYTHON"] = python
         Pkg.build("PyCall")
