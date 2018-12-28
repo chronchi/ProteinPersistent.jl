@@ -7,8 +7,6 @@ if lowercase(get(ENV, "CI", "false")) == "true"
 
     let basepython = get(ENV, "PYTHON", "python2")
 
-        run(`apt-get install python-tk`)
-
         envpath = joinpath(@__DIR__, "env")
         run(`pip install --user virtualenv`)
         run(`virtualenv --python=$basepython $envpath`)
