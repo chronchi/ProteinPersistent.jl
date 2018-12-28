@@ -12,7 +12,8 @@ if lowercase(get(ENV, "CI", "false")) == "true"
 
         python = joinpath(envpath, "bin", "python2")
 
-        run(`$python -m pip install cython`)
+        run(`apt-get install python-tk`)
+        run(`$python -m pip install Cython --install-option="--no-cython-compile"`)
         run(`$python -m pip install ripser`)
 
         ENV["PYTHON"] = python
