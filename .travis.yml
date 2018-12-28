@@ -1,24 +1,23 @@
-# file .travis.yml
-
 language: julia
-
-julia:
-  - nightly
-  - 1.0
-
+env:
+ - CONDA_JL_VERSION=2
 os:
   - linux
-
+julia:
+  - 1.0
+  - nightly
+matrix:
+  - PYTHON=python  # python 2.7
+  #- PYTHON=python3 # python 3.5
+  #- PYTHON=Conda-python
+matrix:
+  allow_failures:
+    - julia: nightly
+branches:
+  only:
+    - master
 notifications:
   email: false
 
-matrix:
-  - PYTHON="python"
-
-before_install:
- - (sudo apt-get install python python-pip)
- - (sudo pip install Cython)
- - (sudo pip install ripser)
- - julia -e 'ENV["PYTHON"]="/usr/local/bin/python"; using Pkg; Pkg.add("PyCall"); Pkg.build("PyCall")'
-
-coveralls: true
+after_success:
+  - julia -e 'using Pkg; import ProteinPersistent; cd(joinpath(dirname(pathof(ProteinPersistent)), ".."));Pkg.add("Coverage"); using Coverage; Coveralls.submit(process_folder())'
