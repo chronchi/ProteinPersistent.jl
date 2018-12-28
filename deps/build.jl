@@ -6,13 +6,15 @@ import CondaBinDeps
 if lowercase(get(ENV, "CI", "false")) == "true"
 
     let basepython = get(ENV, "PYTHON", "python2")
+
+        run(`apt-get install python-tk`)
+
         envpath = joinpath(@__DIR__, "env")
         run(`pip install --user virtualenv`)
         run(`virtualenv --python=$basepython $envpath`)
 
         python = joinpath(envpath, "bin", "python2")
 
-        run(`apt-get install python-tk`)
         run(`$python -m pip install Cython --install-option="--no-cython-compile"`)
         run(`$python -m pip install ripser`)
 
