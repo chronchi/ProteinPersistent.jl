@@ -7,12 +7,15 @@ if lowercase(get(ENV, "CI", "false")) == "true"
 
     let basepython = get(ENV, "PYTHON", "python2")
         envpath = joinpath(@__DIR__, "env")
-        #run(`sudo pip install --user virtualenv`)
+        run(`pip install --user virtualenv`)
+        run(`virtualenv --python=$basepython $envpath`)
 
-        run(`pip3 install Cython`)
-        run(`pip3 install ripser`)
+        python = joinpath(envpath, "bin", "python2")
 
-        ENV["PYTHON"] = "python3"
+        run(`$python -m pip install cython`)
+        run(`$python -m pip install ripser`)
+
+        ENV["PYTHON"] = python
         Pkg.build("PyCall")
 
         if VERSION >= v"0.7.0"
