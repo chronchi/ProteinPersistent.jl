@@ -7,8 +7,8 @@ if lowercase(get(ENV, "CI", "false")) == "true"
 
     let basepython = get(ENV, "PYTHON", "python2")
         envpath = joinpath(@__DIR__, "env")
-        run(`sudo pip install --user virtualenv`)
-        run(`sudo virtualenv --python=$basepython $envpath`)
+        #run(`sudo pip install --user virtualenv`)
+        run(`virtualenv --python=$basepython $envpath`)
 
         python = joinpath(@__DIR__, "bin", "python2")
         #end

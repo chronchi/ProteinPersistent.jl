@@ -2,7 +2,8 @@
 # of a given protein. It uses the ripser algorithm which utilizes the
 # vietoris-rips complex filtration
 
-__precompile__()
+#__precompile__()
+
 module ProteinPersistent
 
 export returndiagram, valuesvariable, coordpdb
