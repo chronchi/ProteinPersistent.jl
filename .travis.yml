@@ -11,7 +11,7 @@ env:
   - CONDA_JL_VERSION=2
 
 matrix:
-  - PYTHON = python
+  - PYTHON=python
 
 matrix:
   allow_failures:
