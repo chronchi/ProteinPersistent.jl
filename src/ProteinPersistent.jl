@@ -17,8 +17,8 @@ const re = PyNULL()
 
 function __init__()
     copy!(ripser, pyimport_conda("scikit-tda.ripser", "scikit-tda"))
-    copy!(pdb, pyimport_conda("Bio.PDB", "biopython", "conda-forge"))
-    copy!(re, pyimport("re"))
+    copy!(pdb, pyimport_conda("Bio.PDB", "Bio.PDB"))
+    copy!(re, pyimport_conda("re", "re"))
 end
 
 # define the functions to load the pdb file as a dataframe with

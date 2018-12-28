@@ -31,6 +31,4 @@ notifications:
     email: false
 env:
     - PYTHON=""
-script:
-    - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
-    - julia -e 'import Pkg; Pkg.clone(pwd()); Pkg.build("ProteinPersistent"); Pkg.test("ProteinPersistent"; coverage=true)';
+    
