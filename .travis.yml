@@ -39,7 +39,7 @@ install:
 
   # install cython and ripser python library
   - sudo pip install Cython
-  - sudo pip install scikit-tda
+  - pip install ripser
 
   # Installing Julia
   - sudo add-apt-repository -y ppa:staticfloat/juliareleases -y
