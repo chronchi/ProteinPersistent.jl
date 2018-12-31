@@ -54,20 +54,14 @@ function coordpdb(filename)
                       coordinates[3], atom_short, radius]
         push!(df, list_to_df)
     end
+    name = zip([:x1, :x2, :x3, :x4, :x5], [:coord1, :coord2, :coord3,
+                                           :atom_name, :radius])
+    rename!(df, f => t for (f,t) = name)
     return df
 end
 
-# define the variables to ripser
-
-mutable struct Variables
-    maxdim::Int
-end
-
-# define values to our variables
-valuesvariable = Variables(1)
-
 # returns the zeroth and first persistent diagram of the given pdb file
-function returndiagram(pdbfile::String; maxdim = valuesvariable.maxdim)
+function returndiagram(pdbfile::String; maxdim = 1)
     # get the coordinates of the protein
     coordinates = coordpdb(pdbfile)
     # convert to an array

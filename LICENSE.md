@@ -1,5 +1,7 @@
 MIT License
 
+Original ripser.cpp Copyright (c) 2015–2018 Ulrich Bauer
+Scikit-tda python package Copyright (c) 2018 Christopher Tralie and Nathaniel Saul
 Copyright (c) 2018: Carlos Henrique Venturi Ronchi
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

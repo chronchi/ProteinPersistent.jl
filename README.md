@@ -8,12 +8,53 @@ Calculate the persistent diagrams of proteins.
 
 # Usage
 
+## Persistence Diagrams
+
 To calculate the persistence diagram of a protein you can call the function ` returndiagram` and pass as input the path to the protein PDB file.
 
-`julia
-
+```julia
 pathpdb = path_to_pdbprotein
 diagrams = returndiagram(pathpdb)
-`
+```
 
-As default it will return the 0th and 1st persistence diagram.  
+As default it will return the 0th and 1st persistence diagram using the Vietoris-Rips complex.
+To specify the dimensions to be calculated you can pass as an optional argument as below.
+
+```julia
+pathpdb = path_to_pdbprotein
+diagrams = returndiagram(pathpdb, maxdim = k)
+```
+The above snippet will return all the persistence diagrams up to the dimension `k`.
+The default `k` is 1. 
+
+## Protein Coordinates
+
+If you want to get the coordinates and use another persistent homology algorithm you can call `coordpdb` and as previously pass the protein PDB file path.
+
+```julia
+pathpdb = path_to_pdbprotein
+proteincoordinates = coordpdb(pathpdb)
+```
+
+The output will be a DataFrame with five columns, where the first three columns are the atom coordinates from the protein, the fourth column corresponds to the respective atoms and the van der Waals radii are given in the last column.
+The values can be see as in the following code.
+
+```julia
+pathpdb = path_to_pdbprotein
+proteincoordinates = coordpdb(pathpdb)
+
+# return the 1st coordinate
+proteincoordinates[:coord1]
+
+# return the 2nd coordinate
+proteincoordinates[:coord2]
+
+# return the 3rd coordinate
+proteincoordinates[:coord3]
+
+# return the respective atom
+proteincoordinates[:atom_name]
+
+# return the respective van der Waals radius
+proteincoordinates[:radius]
+```
