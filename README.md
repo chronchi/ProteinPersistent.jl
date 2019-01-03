@@ -6,6 +6,15 @@ ProteinPersistent
 
 Calculate the persistent diagrams of proteins.
 
+# Installation
+
+Follow the steps below to install the package.
+
+```julia
+using Pkg
+Pkg.add("https://github.com/chronchi/ProteinPersistent.jl")
+```
+
 # Usage
 
 ## Persistence Diagrams
@@ -25,7 +34,7 @@ pathpdb = path_to_pdbprotein
 diagrams = returndiagram(pathpdb, maxdim = k)
 ```
 The above snippet will return all the persistence diagrams up to the dimension `k`.
-The default `k` is 1. 
+The default `k` is 1.
 
 ## Protein Coordinates
 
