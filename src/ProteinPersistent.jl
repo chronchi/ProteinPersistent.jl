@@ -39,7 +39,7 @@ function vanderWaalsRadius(atom_name)
 end
 
 # return the coordinates, atom sequence and van der wall radii as a Dataframe
-function coordpdb(filename)
+function coordpdb(filename, atoms=['H', 'C', 'N', 'O', 'S', 'P', 'M'])
 
     parser = pdb[:PDBParser]()
     structure = parser[:get_structure]("", filename)
@@ -48,11 +48,14 @@ function coordpdb(filename)
 
     for atom in structure[:get_atoms]()
         coordinates = atom[:get_coord]()
-        atom_short = atom_shortname(atom[:get_name]())
-        radius = vanderWaalsRadius(atom_short)
-        list_to_df = [coordinates[1], coordinates[2],
-                      coordinates[3], atom_short, radius]
-        push!(df, list_to_df)
+        name_atom = atom[:get_name]()
+        if name_atom in atoms
+            atom_short = atom_shortname(atom[:get_name]())
+            radius = vanderWaalsRadius(atom_short)
+            list_to_df = [coordinates[1], coordinates[2],
+                          coordinates[3], name_atom, radius]
+            push!(df, list_to_df)
+        end
     end
     name = zip([:x1, :x2, :x3, :x4, :x5], [:coord1, :coord2, :coord3,
                                            :atom_name, :radius])
