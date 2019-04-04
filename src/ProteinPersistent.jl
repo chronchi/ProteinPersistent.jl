@@ -33,13 +33,13 @@ end
 
 # return van der Waals radius associated with 'atom_name'
 function vanderWaalsRadius(atom_name)
-    d = Dict('H' => 1.2, 'C' => 1.7 , 'N' => 1.55, 'O' => 1.52,
+    d = Dict('H' => 1.2, 'C' => 1.7, 'N' => 1.55, 'O' => 1.52,
              'S' => 1.8, 'P' => 1.8, 'M' => 1.73)
     return d[atom_name]
 end
 
 # return the coordinates, atom sequence and van der wall radii as a Dataframe
-function coordpdb(filename, atoms=['H', 'C', 'N', 'O', 'S', 'P', 'M'])
+function coordpdb(filename; atoms=["H", "C", "N", "O", "S", "P", "M"])
 
     parser = pdb[:PDBParser]()
     structure = parser[:get_structure]("", filename)

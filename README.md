@@ -4,11 +4,21 @@ ProteinPersistent
 [![Build Status](https://travis-ci.org/chronchi/ProteinPersistent.jl.svg?branch=master)](https://travis-ci.org/chronchi/ProteinPersistent.jl)
 [![Coverage Status](https://coveralls.io/repos/github/chronchi/ProteinPersistent.jl/badge.svg?branch=master)](https://coveralls.io/github/chronchi/ProteinPersistent.jl?branch=master)
 
-Calculate the persistent diagrams of proteins.
+Calculate the persistence diagrams of proteins.
 
 # Installation
 
-Follow the steps below to install the package.
+## Dependencies
+
+There are a few python packages you ought to install beforehand.
+
+- python 2.7
+  - Tkinker
+  - Cython
+  - ripser
+  - biopython
+
+After having the previous packages installed, follow the steps below to install the package.
 
 ```julia
 using Pkg
