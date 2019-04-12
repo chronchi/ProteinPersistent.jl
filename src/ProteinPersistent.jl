@@ -39,7 +39,15 @@ function vanderWaalsRadius(atom_name)
 end
 
 # return the coordinates, atom sequence and van der wall radii as a Dataframe
-function coordpdb(filename; atoms=["H", "C", "N", "O", "S", "P", "M"])
+function coordpdb(filename; kwargs...)
+
+    atoms = ["CA", "C", "N", "H"]
+
+    for (p,v) in kwargs:
+        if p == :atoms
+            atoms = v
+        end
+    end
 
     parser = pdb[:PDBParser]()
     structure = parser[:get_structure]("", filename)
@@ -64,12 +72,20 @@ function coordpdb(filename; atoms=["H", "C", "N", "O", "S", "P", "M"])
 end
 
 # returns the zeroth and first persistent diagram of the given pdb file
-function returndiagram(pdbfile::String; maxdim = 1)
+function returndiagram(pdbfile::String; kwargs...)
+
+    maxdim = 1
+    for (p,v) in kwargs
+        if p == :maxdim
+            maxdim = v
+        end
+    end
+
     # get the coordinates of the protein
     coordinates = coordpdb(pdbfile)
     # convert to an array
     coordinates = convert(Array{Float64, 2}, coordinates)
-    # calculate the 0th and 1st persistent diagram
+    # calculate the 0th and 1st persistent diagram using Vietoris Rips
     diagrams = ripser[:ripser](coordinates, maxdim=maxdim)
     return diagrams["dgms"]
 end
