@@ -14,8 +14,11 @@ using DataFrames
 const ripser = PyNULL()
 const pdb = PyNULL()
 const re = PyNULL()
+const warnings = PyNULL()
 
 function __init__()
+    copy!(warnings, pyimport("warnings"))
+    warnings[:filterwarnings]("ignore")
     copy!(ripser, pyimport("ripser"))
     copy!(pdb, pyimport("Bio.PDB"))
     copy!(re, pyimport("re"))
@@ -43,7 +46,7 @@ function coordpdb(filename; kwargs...)
 
     atoms = ["CA", "C", "N", "H"]
 
-    for (p,v) in kwargs:
+    for (p,v) in kwargs
         if p == :atoms
             atoms = v
         end
@@ -84,7 +87,7 @@ function returndiagram(pdbfile::String; kwargs...)
     # get the coordinates of the protein
     coordinates = coordpdb(pdbfile)
     # convert to an array
-    coordinates = convert(Array{Float64, 2}, coordinates)
+    coordinates = Matrix{Float64}(coordinates[[:coord1, :coord2, :coord3]])
     # calculate the 0th and 1st persistent diagram using Vietoris Rips
     diagrams = ripser[:ripser](coordinates, maxdim=maxdim)
     return diagrams["dgms"]
