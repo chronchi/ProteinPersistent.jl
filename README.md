@@ -13,7 +13,7 @@ Calculate the persistence diagrams of proteins.
 There are a few python packages you ought to install beforehand.
 
 - python 2.7
-  - Tkinker
+  - Tkinter
   - Cython
   - ripser
   - biopython
